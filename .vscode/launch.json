@@ -1,41 +1,26 @@
 {
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
         {
-            "preLaunchTask": "${defaultBuildTask}",
             "type": "probe-rs-debug",
             "request": "launch",
-            "name": "probe-rs-debugger",
-            // "server": "127.0.0.1:50001", // For connecting to an existing probe-rs-debugger process
-            "chip": "STM32F469NIHx",
+            "name": "probe-rs Test",
             "cwd": "${workspaceFolder}",
+            "connectUnderReset": true,
+            "chip": "STM32H745ZITx",
+            "flashingConfig": {
+                "flashingEnabled": true,
+                "haltAfterReset": true
+            },
             "coreConfigs": [
                 {
                     "coreIndex": 0,
-                    "svdFile": "stm32f469.svd.patched",
-                    "rttEnabled": true,
-                    "rttChannelFormats": [
-                        {
-                            "dataFormat": "String",
-                            "channelNumber": 0,
-                            "showTimestamps": true
-                        }
-                    ],
-                },
-            ],
-            "runtimeExecutable": "probe-rs",
-            "runtimeArgs": ["dap-server"],
-            "flashingConfig": {
-              "flashingEnabled": true,
-              "haltAfterReset": false,
-              "formatOptions": {
-                "format": "elf" //!MODIFY (or remove). Valid values are: 'bin', 'hex', 'elf'(default), 'idf'
-              }
-            },
-            "connectUnderReset": false,
-            "consoleLogLevel": "Console" //Info, Debug
-            //"speed": 24000, //!MODIFY (or remove)
-            //"probe": "VID:PID:<Serial>", //!MODIFY (or remove)
-        },
+                    "programBinary": "./target/thumbv7em-none-eabihf/debug/${workspaceFolderBasename}"
+                }
+            ]
+        }
     ]
 }
