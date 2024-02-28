@@ -10,7 +10,7 @@
             "name": "probe-rs Test",
             "cwd": "${workspaceFolder}",
             "connectUnderReset": true,
-            "chip": "STM32H745ZITx",
+            "chip": "STM32F469NIHx",
             "flashingConfig": {
                 "flashingEnabled": true,
                 "haltAfterReset": true
